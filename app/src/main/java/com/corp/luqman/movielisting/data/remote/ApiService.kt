@@ -3,7 +3,6 @@ package com.corp.luqman.movielisting.data.remote
 import com.corp.luqman.movielisting.data.models.response.*
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
-import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -25,10 +24,6 @@ interface ApiService {
         @Path("id") id : String,
         @Query("page")page:String,
         @Query("language")language:String):Deferred<ReviewMovieResponse>
-
-    @GET("genre/movie/list")
-    fun getDataGenre(
-        @Query("language")language:String):Deferred<GenreResponse>
 
     @GET("movie/{id}/videos")
     fun getDataVideo(

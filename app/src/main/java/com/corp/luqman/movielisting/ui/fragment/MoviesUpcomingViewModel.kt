@@ -10,7 +10,6 @@ import com.corp.luqman.movielisting.data.repository.MoviesRepository
 import com.corp.luqman.movielisting.utils.Const
 import com.corp.luqman.movielisting.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
@@ -54,7 +53,7 @@ class MoviesUpcomingViewModel @Inject constructor(val moviesRepository: MoviesRe
 
         viewModelScope.launch {
             try {
-                val result = moviesRepository.getMoviesData(
+                val result = moviesRepository.getListMovies(
                     Const.UPCOMING_PATH, page, language).await()
 
                 listMovie.addAll(result.results!!)
@@ -76,7 +75,7 @@ class MoviesUpcomingViewModel @Inject constructor(val moviesRepository: MoviesRe
 
         viewModelScope.launch {
             try {
-                val result = moviesRepository.searchMovie(page, language,
+                val result = moviesRepository.searchMovieByKeyWord(page, language,
                     keyword!!, "false").await()
 
                 listMovie.addAll(result.results!!)

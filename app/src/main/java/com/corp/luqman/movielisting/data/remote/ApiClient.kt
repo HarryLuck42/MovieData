@@ -18,7 +18,6 @@ class TokenInterceptor : Interceptor{
 }
 
 class MyAuthenticator() : Authenticator {
-    private var request: Request? = null
     private var response: Response? = null
     override fun authenticate(route: Route?, response: Response): Request? {
         var tokenRefresh = ""

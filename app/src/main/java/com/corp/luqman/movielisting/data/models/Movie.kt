@@ -1,6 +1,5 @@
 package com.corp.luqman.movielisting.data.models
 
-import androidx.room.ColumnInfo
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 

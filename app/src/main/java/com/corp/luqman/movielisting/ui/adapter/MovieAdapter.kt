@@ -16,7 +16,7 @@ class MovieAdapter(val context: Context, val listMovie: MutableList<Movie>, val 
 
     class ViewHolder(val binding: ItemMovieBinding): RecyclerView.ViewHolder(binding.root){
         fun setData(movie: Movie, clickListener: MovieListener){
-            val itemView = binding.root;
+            val itemView = binding.root
             Glide.with(itemView.context).load(Const.imageUrlbase + movie.posterPath).placeholder(R.drawable.loading_animation)
                 .apply(RequestOptions()
                     .error(R.drawable.ic_broken))

@@ -3,10 +3,8 @@ package com.corp.luqman.movielisting.utils
 import android.text.TextUtils
 import com.corp.luqman.movielisting.data.models.response.ErrorResponse
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import okhttp3.ResponseBody
 import retrofit2.HttpException
-import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.SocketTimeoutException

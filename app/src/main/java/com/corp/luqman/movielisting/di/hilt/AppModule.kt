@@ -21,11 +21,4 @@ object AppModule {
     fun provideAppSchedulerProvider(): SchedulerProvider{
         return AppSchedulerProvider()
     }
-
-//    @Singleton
-//    @Provides
-//    fun provideRepository(apiService: ApiService,
-//                          dao: MovieDao): MoviesRepository{
-//        return MoviesRepository(apiService, dao)
-//    }
 }

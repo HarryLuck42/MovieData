@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.corp.luqman.movielisting.data.models.Favorite
 import com.corp.luqman.movielisting.data.models.Movie
-import com.corp.luqman.movielisting.data.models.response.GenreResponse
 import com.corp.luqman.movielisting.data.models.response.MoviesResponse
 import com.corp.luqman.movielisting.data.repository.MoviesRepository
 import com.corp.luqman.movielisting.utils.Const
@@ -53,7 +52,7 @@ class MoviesPopularViewModel @Inject constructor(val moviesRepository: MoviesRep
 
         viewModelScope.launch {
             try {
-                val result = moviesRepository.getMoviesData(
+                val result = moviesRepository.getListMovies(
                     Const.POPULAR_PATH, page, language).await()
 
                 listMovie.addAll(result.results!!)
@@ -73,7 +72,7 @@ class MoviesPopularViewModel @Inject constructor(val moviesRepository: MoviesRep
 
         viewModelScope.launch {
             try {
-                val result = moviesRepository.searchMovie(page, language,
+                val result = moviesRepository.searchMovieByKeyWord(page, language,
                     keyword!!, "false").await()
 
                 listMovie.addAll(result.results!!)

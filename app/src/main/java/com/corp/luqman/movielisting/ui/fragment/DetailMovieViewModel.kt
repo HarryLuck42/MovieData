@@ -3,6 +3,7 @@ package com.corp.luqman.movielisting.ui.fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.corp.luqman.movielisting.data.models.Video
 import com.corp.luqman.movielisting.data.models.response.MovieDetailResponse
 import com.corp.luqman.movielisting.data.models.response.VideoResponse
@@ -17,8 +18,6 @@ import javax.inject.Inject
 class DetailMovieViewModel @Inject constructor(private val moviesRepository: MoviesRepository) : ViewModel() {
 
 
-
-    private val scope = CoroutineScope((GlobalScope.coroutineContext))
     val detailState = MutableLiveData<UiState<MovieDetailResponse>>()
     val videoState = MutableLiveData<UiState<VideoResponse>>()
 
@@ -33,9 +32,9 @@ class DetailMovieViewModel @Inject constructor(private val moviesRepository: Mov
     fun getDetailMovie(id:String, language:String){
         detailState.value = UiState.Loading()
 
-        scope.launch {
+        viewModelScope.launch {
             try {
-                val result = moviesRepository.getDetailMovieData(id, language).await()
+                val result = moviesRepository.getMovieDetail(id, language).await()
                 _movieDetail.postValue(result)
                 detailState.postValue(UiState.Success(result))
 
@@ -45,12 +44,12 @@ class DetailMovieViewModel @Inject constructor(private val moviesRepository: Mov
         }
     }
 
-    fun getDataVideo(id:String, api_key: String, language:String){
+    fun getDataVideo(id:String, language:String){
         videoState.value = UiState.Loading()
 
-        scope.launch {
+        viewModelScope.launch {
             try {
-                val result = moviesRepository.getVideos(id, language).await()
+                val result = moviesRepository.getDataVideo(id, language).await()
                 result.results?.let {
                     _videos.postValue(it)
                     videoState.postValue(UiState.Success(result))

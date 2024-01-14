@@ -11,7 +11,6 @@ import com.corp.luqman.movielisting.utils.Const
 import com.corp.luqman.movielisting.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
@@ -52,7 +51,7 @@ class MoviesNowPlayingViewModel @Inject constructor(private val moviesRepository
 
         viewModelScope.launch {
             try {
-                val result = moviesRepository.getMoviesData(Const.NOW_PLAYING_PATH, page, language).await()
+                val result = moviesRepository.getListMovies(Const.NOW_PLAYING_PATH, page, language).await()
 
                 listMovie.addAll(result.results!!)
 
@@ -72,7 +71,7 @@ class MoviesNowPlayingViewModel @Inject constructor(private val moviesRepository
 
         viewModelScope.launch {
             try {
-                val result = moviesRepository.searchMovie(page, language,
+                val result = moviesRepository.searchMovieByKeyWord(page, language,
                     keyword!!, "false").await()
 
                 listMovie.addAll(result.results!!)

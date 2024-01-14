@@ -51,26 +51,7 @@ data class Favorite(
     @ColumnInfo(name = "release_date")
     @SerializedName("release_date")
     var releaseDate: String? = ""
-) {
-    fun convert(): Movie {
-        return Movie(
-            this.id,
-            this.popularity,
-            this.voteCount,
-            this.video,
-            this.posterPath,
-            this.adult,
-            this.backdropPath,
-            this.originalLanguage,
-            this.originalTitle,
-            this.genreIds,
-            this.title,
-            this.voteAverage,
-            this.overview,
-            this.releaseDate
-        )
-    }
-}
+)
 
 object ConverterListInt {
 

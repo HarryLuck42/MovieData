@@ -152,7 +152,7 @@ class DetailMovieFragment : Fragment() {
                 }
                 is UiState.Success -> {
                     progressDialog.dismiss()
-                    viewModel.getDataVideo(it.data.id.toString(), Const.apikey, Const.language)
+                    viewModel.getDataVideo(it.data.id.toString(), Const.language)
                 }
                 is UiState.Error -> {
                     progressDialog.dismiss()
